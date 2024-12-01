@@ -21,17 +21,3 @@ public struct CharactersDataSource: CharactersDataSourceType {
         return CharactersViewData(totalPages: data.info?.pages ?? .zero, characters: characters)
     }
 }
-
-public extension MainCharacter {
-    init(dto: CharacterInfo) {
-        self.init(
-            id: dto.id ?? 0,
-            name: dto.name ?? "N/A",
-            image: URL(string: dto.image ?? ""),
-            species: dto.species ?? "N/A",
-            status: FilterStatus(rawValue: dto.status?.rawValue ?? "N/A") ?? .unknown,
-            gender: dto.gender ?? "N/A",
-            location: dto.location?.name ?? "N/A"
-        )
-    }
-}
