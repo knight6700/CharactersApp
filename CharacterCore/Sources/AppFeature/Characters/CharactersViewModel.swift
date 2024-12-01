@@ -135,7 +135,8 @@ extension CharactersViewModel {
     }
 
     private func loadMore(indexPath: Int) async throws {
-        guard indexPath >= state.characters.count - 5,
+        let preloadThreshold = 5
+        guard indexPath >= state.characters.count - preloadThreshold,
             let nextPage = state.parameters?.page,
             nextPage < state.totalPages
         else { return }

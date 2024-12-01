@@ -180,6 +180,7 @@ Presentation Layer
 ### **Key Improvements**
 1. **Factory Pattern for Initialization**: Create a `DependencyContainer` to manage dependencies and build the graph.
 2. **Coordinator Pattern**: Use a BaseCoordinator to manage child coordinators and modularize navigation logic, ensuring scalability, reusability, and cleaner separation of concerns across app flows.
+3. **swift-sourcery-templates**: Use Sourcery for advanced protocol mocking, type erasure, and code-generation to reduce boilerplate and speed up development.
 .
 
 Would you like me to provide the `DependencyContainer` implementation or unit test examples for this structure?
