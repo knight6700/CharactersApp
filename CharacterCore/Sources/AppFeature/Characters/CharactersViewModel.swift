@@ -146,10 +146,12 @@ extension CharactersViewModel {
 
     fileprivate func tableViewCellTapped(index: Int) {
         let character = state.characters[index]
-        router?.navigate(
-            to: .characterDetails(character: character),
-            type: .push
-        )
+        Task { @MainActor in
+            router?.navigate(
+                to: .characterDetails(character: character),
+                type: .push
+            )
+        }
     }
     // MARK: - Segment
     fileprivate func handleSegment(selectedStatus: FilterStatus?) async throws {
