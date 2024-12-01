@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "0C687256-7DB0-4804-B8B2-4DD600FCA3D7",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "CharacterCoreTests",
+        "name" : "CharacterCoreTests"
+      }
+    }
+  ],
+  "version" : 1
+}
