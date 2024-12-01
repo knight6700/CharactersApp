@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1EAEF4EA2CFBD6AA00C46157 /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = 1EAEF4E92CFBD6AA00C46157 /* netfox */; };
 		1EE4C2B82CF9E23C002CA185 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 1EE4C2B72CF9E23C002CA185 /* AppFeature */; };
 		1EE4C2BA2CF9E23C002CA185 /* DesignComponent in Frameworks */ = {isa = PBXBuildFile; productRef = 1EE4C2B92CF9E23C002CA185 /* DesignComponent */; };
 /* End PBXBuildFile section */
@@ -75,7 +74,6 @@
 			files = (
 				1EE4C2BA2CF9E23C002CA185 /* DesignComponent in Frameworks */,
 				1EE4C2B82CF9E23C002CA185 /* AppFeature in Frameworks */,
-				1EAEF4EA2CFBD6AA00C46157 /* netfox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +146,6 @@
 			packageProductDependencies = (
 				1EE4C2B72CF9E23C002CA185 /* AppFeature */,
 				1EE4C2B92CF9E23C002CA185 /* DesignComponent */,
-				1EAEF4E92CFBD6AA00C46157 /* netfox */,
 			);
 			productName = CharactersApp;
 			productReference = 1E6AFA6C2CF916E3007BD7CA /* CharactersApp.app */;
@@ -233,7 +230,6 @@
 			mainGroup = 1E6AFA632CF916E3007BD7CA;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				1EAEF4E82CFBD6AA00C46157 /* XCRemoteSwiftPackageReference "netfox" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1E6AFA6D2CF916E3007BD7CA /* Products */;
@@ -597,23 +593,7 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		1EAEF4E82CFBD6AA00C46157 /* XCRemoteSwiftPackageReference "netfox" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kasketis/netfox";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.21.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		1EAEF4E92CFBD6AA00C46157 /* netfox */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1EAEF4E82CFBD6AA00C46157 /* XCRemoteSwiftPackageReference "netfox" */;
-			productName = netfox;
-		};
 		1EE4C2B72CF9E23C002CA185 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
