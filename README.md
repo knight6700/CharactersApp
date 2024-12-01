@@ -20,14 +20,11 @@
 ## **App Screenshots**
 Here’s a glimpse of the app’s UI:
 
-### 1. Characters List
-![Characters List](Images/characters-list.png)
-
-### 2. Filter Options
-![Filter Options](Images/filter-options.png)
-
-### 3. Character Details
-![Character Details](Images/character-details.png)
+| Feature                | Description                               | Screenshot                                |
+|------------------------|-------------------------------------------|------------------------------------------|
+| **Characters List**    | Displays a list of all characters.        | <img src="Images/characters-list.png" alt="Characters List" width="300" height="500"> |
+| **Filter Options**     | Allows filtering characters by status.    | <img src="Images/filter-options.png" alt="Filter Options" width="300" height="500"> |
+| **Character Details**  | Shows detailed information about a character. | <img src="Images/character-details.png" alt="Character Details" width="300" height="500"> |
 
 ---
 
