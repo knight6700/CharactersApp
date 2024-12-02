@@ -122,7 +122,7 @@ This layer is concerned with the user interface and user interaction. It include
 
 ---
 
-## **Dependency Injection Graph**
+## **Dependency Rules Graph**
 
 ```plaintext
 Presentation Layer
@@ -130,13 +130,13 @@ Presentation Layer
           ↓
 Domain Layer
    └── CharactersUseCase
-          ↓
+          ↑
 Data Layer
    ├── CharactersRepository
           ↓
    └── CharactersDataSource
 ```
-<img src="Images/characters-architecture.svg" alt="Characters List" height="350"> 
+
 
 ## **State Management Protocols Usage**
 <img src="Images/state-management-protocols-diagram.svg" alt="Characters List" height="350"> 
