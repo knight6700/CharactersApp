@@ -3,20 +3,25 @@ import AppFeature
 import Models
 
 struct MockCharactersDataSource: CharactersDataSourceType {
-    var charactersRepository: CharactersRepositoryType
-
-    init(
-        repository: CharactersRepositoryType
-    ) {
-        self.charactersRepository = repository
+    enum MockError: Error {
+        case networkError
     }
 
-    // Mock the `getAllCharacters` method
-    func getAllCharacters(parameters: CharacterParameters) async throws -> CharactersViewData {
-       let response = try await charactersRepository.fetchCharacters(parameters: parameters)
-        return CharactersViewData(
-            totalPages: response.info?.pages ?? .zero,
-            characters: response.results?.map { MainCharacter(dto: $0) } ?? []
-        )
+    var result: Result<CharactersDTO, Error>
+
+    func getCharacters(parameters: CharacterParameters) async throws -> CharactersDTO {
+        switch result {
+        case .success(let charactersDTO):
+            parameters.status == nil ?
+            charactersDTO
+            : CharactersDTO(
+                info: charactersDTO.info,
+                results: charactersDTO
+                    .results?
+                    .filter { $0.status?.rawValue == parameters.status }
+            )
+        case .failure(let error):
+            throw error
+        }
     }
 }
