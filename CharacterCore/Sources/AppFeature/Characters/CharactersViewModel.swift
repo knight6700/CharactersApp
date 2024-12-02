@@ -1,10 +1,3 @@
-//
-//  CharactersViewModel.swift
-//  CharactersApp
-//
-//  Created by MahmoudFares on 29/11/2024.
-//
-
 import Combine
 import Foundation
 import Kingfisher
@@ -168,8 +161,7 @@ extension CharactersViewModel {
         try await loadData()
     }
 
-    fileprivate func applySegment(_ selectedStatus: FilterStatus?) async throws
-    {
+    fileprivate func applySegment(_ selectedStatus: FilterStatus?) async throws {
         viewState.selectedStatus = selectedStatus
         initiateParameters(status: viewState.selectedStatus?.rawValue)
         viewState.state = .loading

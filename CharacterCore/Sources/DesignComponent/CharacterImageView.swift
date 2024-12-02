@@ -21,7 +21,7 @@ public struct CharacterImageView: View {
     public var body: some View {
         KFImage(image)
             .resizable()
-            
+
             .scaledToFill()
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
     }

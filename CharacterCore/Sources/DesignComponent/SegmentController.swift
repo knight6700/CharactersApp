@@ -1,10 +1,3 @@
-//
-//  SegmentController.swift
-//  CharactersApp
-//
-//  Created by MahmoudFares on 28/11/2024.
-//
-
 import SwiftUI
 import enum Models.FilterStatus
 

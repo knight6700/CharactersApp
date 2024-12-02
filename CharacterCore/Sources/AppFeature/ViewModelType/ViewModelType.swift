@@ -1,4 +1,3 @@
-
 import Foundation
 
 protocol ViewModelType {
@@ -8,4 +7,3 @@ protocol ViewModelType {
     var state: State { get set }
     func trigger(_ action: Action) async throws
 }
-

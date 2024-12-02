@@ -1,11 +1,5 @@
-//
-//  MainCharacter.swift
-//  CharactersApp
-//
-//  Created by MahmoudFares on 29/11/2024.
-//
-
 import Foundation
+
 public struct MainCharacter: Hashable, Equatable, Identifiable {
     public let id: Int
     public let name: String
@@ -14,7 +8,7 @@ public struct MainCharacter: Hashable, Equatable, Identifiable {
     public let status: FilterStatus
     public let gender: String
     public let location: String
-    
+
     public init(
         id: Int,
         name: String,
@@ -56,4 +50,3 @@ public extension MainCharacter {
         )
     }
 }
-
