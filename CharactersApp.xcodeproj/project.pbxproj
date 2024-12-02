@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1ECD7BE72CFD995B00036A64 /* netfox in Frameworks */ = {isa = PBXBuildFile; productRef = 1ECD7BE62CFD995B00036A64 /* netfox */; };
 		1EE4C2B82CF9E23C002CA185 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 1EE4C2B72CF9E23C002CA185 /* AppFeature */; };
 		1EE4C2BA2CF9E23C002CA185 /* DesignComponent in Frameworks */ = {isa = PBXBuildFile; productRef = 1EE4C2B92CF9E23C002CA185 /* DesignComponent */; };
 /* End PBXBuildFile section */
@@ -32,7 +33,7 @@
 		1E6AFA6C2CF916E3007BD7CA /* CharactersApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CharactersApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E6AFA822CF916E6007BD7CA /* CharactersAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CharactersAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E6AFA8C2CF916E6007BD7CA /* CharactersAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CharactersAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1EAEF4EB2CFC6E4900C46157 /* CharacterCoreTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CharacterCoreTests.xctestplan; sourceTree = "<group>"; };
+		1ECD7BE82CFD99DF00036A64 /* CharactersApp.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CharactersApp.xctestplan; sourceTree = "<group>"; };
 		1EE2693C2CF9B28200BD0F4A /* CharacterCore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CharacterCore; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -74,6 +75,7 @@
 			files = (
 				1EE4C2BA2CF9E23C002CA185 /* DesignComponent in Frameworks */,
 				1EE4C2B82CF9E23C002CA185 /* AppFeature in Frameworks */,
+				1ECD7BE72CFD995B00036A64 /* netfox in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,7 +99,7 @@
 		1E6AFA632CF916E3007BD7CA = {
 			isa = PBXGroup;
 			children = (
-				1EAEF4EB2CFC6E4900C46157 /* CharacterCoreTests.xctestplan */,
+				1ECD7BE82CFD99DF00036A64 /* CharactersApp.xctestplan */,
 				1EE2693C2CF9B28200BD0F4A /* CharacterCore */,
 				1E6AFA6E2CF916E3007BD7CA /* CharactersApp */,
 				1E6AFA852CF916E6007BD7CA /* CharactersAppTests */,
@@ -146,6 +148,7 @@
 			packageProductDependencies = (
 				1EE4C2B72CF9E23C002CA185 /* AppFeature */,
 				1EE4C2B92CF9E23C002CA185 /* DesignComponent */,
+				1ECD7BE62CFD995B00036A64 /* netfox */,
 			);
 			productName = CharactersApp;
 			productReference = 1E6AFA6C2CF916E3007BD7CA /* CharactersApp.app */;
@@ -230,6 +233,7 @@
 			mainGroup = 1E6AFA632CF916E3007BD7CA;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
+				1ECD7BE52CFD995B00036A64 /* XCRemoteSwiftPackageReference "netfox" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1E6AFA6D2CF916E3007BD7CA /* Products */;
@@ -593,7 +597,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		1ECD7BE52CFD995B00036A64 /* XCRemoteSwiftPackageReference "netfox" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kasketis/netfox";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.21.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		1ECD7BE62CFD995B00036A64 /* netfox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1ECD7BE52CFD995B00036A64 /* XCRemoteSwiftPackageReference "netfox" */;
+			productName = netfox;
+		};
 		1EE4C2B72CF9E23C002CA185 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;

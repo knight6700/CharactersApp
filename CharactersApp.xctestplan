@@ -1,0 +1,35 @@
+{
+  "configurations" : [
+    {
+      "id" : "E7B8A302-A3EA-4BE0-9E9F-CA5B7CA8C175",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:CharactersApp.xcodeproj",
+      "identifier" : "1E6AFA6B2CF916E3007BD7CA",
+      "name" : "CharactersApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:CharacterCore",
+        "identifier" : "CharacterCoreTests",
+        "name" : "CharacterCoreTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:CharacterCore",
+        "identifier" : "CharacterSnapShotTests",
+        "name" : "CharacterSnapShotTests"
+      }
+    }
+  ],
+  "version" : 1
+}
