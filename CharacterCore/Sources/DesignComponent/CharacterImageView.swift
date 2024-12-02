@@ -1,10 +1,3 @@
-//
-//  CharacterImageView.swift
-//  CharactersApp
-//
-//  Created by MahmoudFares on 29/11/2024.
-//
-
 import SwiftUI
 import Kingfisher
 
