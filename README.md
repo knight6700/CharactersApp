@@ -2,13 +2,36 @@
 ![UIKIT](https://img.shields.io/badge/UIKIT-blue.svg?style=flat)
 ![Swift5.9](https://img.shields.io/badge/Swift_Version-5.9-green?logo=swift)
 ![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)
+
 # Characters App 📱
 
 **Characters App** is a Swift-based iOS application built using MVVM architecture. The app displays a list of characters with their details and allows filtering characters by their status: **Alive**, **Dead**, or **Unknown**. The app also includes a detailed view for individual characters.
 
 ---
 
+## **Table of Contents**
+
+1. [Features](#features)  
+2. [App Screenshots](#app-screenshots)  
+3. [How It Works](#how-it-works)  
+   - [Main View](#1-main-view)  
+   - [Filter Characters](#2-filter-characters)  
+   - [Character Details](#3-character-details)  
+4. [Setup & Installation](#setup--installation)  
+5. [Architecture Overview](#architecture-overview)  
+   - [Data Layer](#data-layer)  
+   - [Domain Layer](#domain-layer)  
+   - [Presentation Layer](#presentation-layer)  
+6. [Dependencies](#dependencies)  
+7. [API Integration](#api-integration)  
+8. [Future Enhancements](#future-enhancements)  
+9. [Contributing](#contributing)  
+10. [License](#license)  
+
+---
+
 ## **Features**
+
 - 📜 **List of Characters**: Displays a table view of all characters with their name, species, and status.
 - 🔍 **Filter Options**: Filter characters by their status (**Alive**, **Dead**, **Unknown**).
 - 🧍‍♂️ **Character Details**: View detailed information about a selected character, including:
@@ -69,138 +92,38 @@ On selecting a character from the list, a detail view is shown with the characte
 2. **Open in Xcode**
    - Open the `.xcodeproj` or `.xcworkspace` file.
 3. **Install Dependencies** (if applicable)
-   resolve SPM
+   Resolve SPM.
 4. **Run the App**
    - Select a simulator or a connected device.
    - Click the **Run** button or press `⌘R`.
 
 ---
-### **Architecture Overview**
 
-#### **Data Layer**
-This layer is responsible for fetching data from external sources (e.g., APIs, databases). It includes:
-- **`CharactersApi`**: Handles API calls.
-- **`CharactersRepository`**: Provides an interface between the API and the domain layer by handling data fetching and transforming raw API responses into domain models.
+## **Architecture Overview**
 
-#### **Domain Layer**
-This layer focuses on the business logic and ensures that the app adheres to clean architecture principles. It includes:
-- **`CharactersDataSource`**: Defines the contract for data fetching.
-- **`CharactersUseCase`**: Encapsulates the business logic and uses the repository to fetch or modify data as required.
+### **Data Layer**
+Handles data fetching and transformation.
 
-#### **Presentation Layer**
-This layer is concerned with the user interface and user interaction. It includes:
-- **ViewModel**: Processes data provided by the domain layer into a format suitable for the view.
-- **Views/Controllers**: Displays data and captures user interactions.
+### **Domain Layer**
+Encapsulates business logic and communicates with the data layer.
 
----
+### **Presentation Layer**
+Manages UI and user interactions.
 
-### **Refined Structure**
-
-#### **Data Layer**
-```swift
-// CharactersApi.swift
-protocol CharactersApiType {
-    func fetchCharacters(parameters: CharacterParameters) async throws -> CharactersResponse
-}
-
-class CharactersApi: CharactersApiType {
-    func fetchCharacters(parameters: CharacterParameters) async throws -> CharactersResponse {
-        // API request implementation
-    }
-}
-
-// CharactersRepository.swift
-protocol CharactersRepositoryType {
-    func getAllCharacters(parameters: CharacterParameters) async throws -> CharactersResponse
-}
-
-class CharactersRepository: CharactersRepositoryType {
-    private let api: CharactersApiType
-
-    init(api: CharactersApiType) {
-        self.api = api
-    }
-
-    func getAllCharacters(parameters: CharacterParameters) async throws -> CharactersResponse {
-        return try await api.fetchCharacters(parameters: parameters)
-    }
-}
-```
-
-#### **Domain Layer**
-```swift
-// CharactersDataSource.swift
-protocol CharactersDataSourceType {
-    func getAllCharacters(parameters: CharacterParameters) async throws -> CharactersResponse
-}
-
-class CharactersDataSource: CharactersDataSourceType {
-    private let repository: CharactersRepositoryType
-
-    init(repository: CharactersRepositoryType) {
-        self.repository = repository
-    }
-
-    func getAllCharacters(parameters: CharacterParameters) async throws -> CharactersResponse {
-        return try await repository.getAllCharacters(parameters: parameters)
-    }
-}
-
-// MapCharactersUseCase.swift
-struct MapCharactersUseCase {
-    private let dataSource: CharactersDataSourceType
-
-    init(dataSource: CharactersDataSourceType) {
-        self.dataSource = dataSource
-    }
-
-    func execute(parameters: CharacterParameters) async throws -> [MainCharacter] {
-        let response = try await dataSource.getAllCharacters(parameters: parameters)
-        return response.characters
-    }
-}
-```
-
-#### **Presentation Layer**
-The `CharactersViewModel` remains the same but interacts with `CharactersDataSource` through the `MapCharactersUseCase`.
-
----
-
-### **Dependency Injection Graph**
-```plaintext
-Presentation Layer
-   └── CharactersViewModel
-         └── MapCharactersUseCase
-               └── Domain Layer
-                     └── CharactersDataSource
-                           └── Data Layer
-                                 ├── CharactersRepository
-                                 │     └── CharactersApi
-                                 └── CharactersService
-```
-
----
-
-### **Key Improvements**
-1. **Factory Pattern for Initialization**: Create a `DependencyContainer` to manage dependencies and build the graph.
-2. **Coordinator Pattern**: Use a BaseCoordinator to manage child coordinators and modularize navigation logic, ensuring scalability, reusability, and cleaner separation of concerns across app flows.
-3. **swift-sourcery-templates**: Use Sourcery for advanced protocol mocking, type erasure, and code-generation to reduce boilerplate and speed up development.
-.
 ---
 
 ## **Dependencies**
 
-- `UIKit`: Used for building the UI.
-- `SwiftUI`: Used for building the UI.
-- `URLSession`: For API communication (depending on implementation).
+- `UIKit`: For building UI.
+- `SwiftUI`: For building UI.
+- `URLSession`: For API communication.
 - `Kingfisher`: For image downloading and caching.
-- `Snapshot-Testing`: For snapshot views.
-- `Netfox`: quick look on all executed network requests performed.
+- `Snapshot-Testing`: For snapshot testing views.
+- `Netfox`: For monitoring network requests.
+
 ---
 
 ## **API Integration**
-The app fetches data from the **Rick and Morty API**.
-You will receive up to 20 documents per page
 
 ### **Endpoints**  
 1. **Fetch All Characters**  
@@ -210,10 +133,12 @@ You will receive up to 20 documents per page
    - URL: `https://rickandmortyapi.com/api/character?page=1&status=<status>`  
    - Replace `<status>` with `alive`, `dead`, or `unknown`.  
    - Use `page` query parameter to paginate results.   
+
 ---
 
 ## **Future Enhancements**
-- 🌎 **Connactivity** Show no internet Automatic if not internet.
+
+- 🌎 **Connectivity**: Show "No Internet" status automatically if offline.
 - 🔥 **Favorites**: Allow users to mark characters as favorites.
 - 📊 **Statistics**: Show stats for the number of alive, dead, and unknown characters.
 - 🌑 **Dark Mode**: Support for system-wide dark mode.
@@ -221,14 +146,17 @@ You will receive up to 20 documents per page
 ---
 
 ## **Contributing**
-Contributions are welcome! Feel free to:
-1. Fork the repository.
-2. Create a feature branch (`git checkout -b feature-branch`).
-3. Commit your changes (`git commit -m "Add new feature"`).
-4. Push to the branch (`git push origin feature-branch`).
+
+Contributions are welcome!  
+1. Fork the repository.  
+2. Create a feature branch (`git checkout -b feature-branch`).  
+3. Commit your changes (`git commit -m "Add new feature"`).  
+4. Push to the branch (`git push origin feature-branch`).  
 5. Create a pull request.
 
 ---
 
 ## **License**
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more details.
+
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+```
