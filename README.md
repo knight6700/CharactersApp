@@ -28,10 +28,6 @@
 | Displays a list of all characters, including their name, species, and status.                       | Allows filtering the list by character status (**All**, **Alive**, **Dead**, **Unknown**).         | Shows detailed information about a selected character, such as name, species, status, and location. |
 
 ---
-
-This version keeps the layout consistent, with the images in the first row and their respective descriptions in the second row. Let me know if you need further refinements!
----
-
 ## **How It Works**
 
 ### **1. Main View**
