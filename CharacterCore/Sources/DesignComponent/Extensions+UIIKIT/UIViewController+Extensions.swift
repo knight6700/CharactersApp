@@ -32,13 +32,11 @@ public extension UIViewController {
         }
     }
     func showToast(message: String) {
-        // Create the toast view
         let toastView = UIView()
         toastView.backgroundColor = .red
         toastView.layer.cornerRadius = 10
         toastView.clipsToBounds = true
 
-        // Create the label for the message
         let messageLabel = UILabel()
         messageLabel.text = !Connectivity.shared.isConnected ? "No Internet" : message
         messageLabel.textColor = .white
@@ -49,7 +47,6 @@ public extension UIViewController {
 
         toastView.addSubview(messageLabel)
 
-        // Set constraints for the label to fill the toast view
         NSLayoutConstraint.activate([
             messageLabel.leadingAnchor.constraint(equalTo: toastView.leadingAnchor, constant: 16),
             messageLabel.trailingAnchor.constraint(equalTo: toastView.trailingAnchor, constant: -16),
@@ -57,10 +54,8 @@ public extension UIViewController {
             messageLabel.bottomAnchor.constraint(equalTo: toastView.bottomAnchor, constant: -8)
         ])
 
-        // Add the toast view to the current view
         self.view.addSubview(toastView)
 
-        // Set the toast view's frame to be at the top of the screen and ignore the safe area
         toastView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             toastView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
@@ -69,13 +64,11 @@ public extension UIViewController {
             toastView.heightAnchor.constraint(equalToConstant: 50)
         ])
 
-        // Animate the appearance of the toast
         toastView.alpha = 0
         UIView.animate(withDuration: 0.5, animations: {
             toastView.alpha = 1
         })
 
-        // Dismiss the toast after 3 seconds
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             UIView.animate(withDuration: 0.5, animations: {
                 toastView.alpha = 0
