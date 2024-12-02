@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  CharacterCore
-//
-//  Created by MahmoudFares on 29/11/2024.
-//
-
 import Router
 import struct Models.MainCharacter
 import UIKit
@@ -13,7 +6,7 @@ import SwiftUI
 public enum AppRoute: RouteRepresentable {
     case characters
     case characterDetails(character: MainCharacter)
-    
+
     public var path: String {
         switch self {
         case .characters: return "/characters"
@@ -36,8 +29,7 @@ public class AppRouter: Router<AppRoute> {
             return hosting
         }
     }
-    
-    
+
     public func start() -> UIViewController {
         let rootViewController  = createViewController(for: .characters)
         guard let navigationController else {

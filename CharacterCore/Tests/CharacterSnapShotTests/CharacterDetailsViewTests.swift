@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  CharacterCore
-//
-//  Created by MahmoudFares on 02/12/2024.
-//
-
 import Foundation
 @testable import AppFeature
 import SnapshotTesting

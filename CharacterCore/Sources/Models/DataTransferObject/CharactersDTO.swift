@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  CharacterCore
-//
-//  Created by MahmoudFares on 01/12/2024.
-//
-
 import Foundation
 
 public struct CharactersDTO: Decodable {

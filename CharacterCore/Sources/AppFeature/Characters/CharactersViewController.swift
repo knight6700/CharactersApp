@@ -1,10 +1,3 @@
-//
-//  CharactersViewController.swift
-//  CharactersApp
-//
-//  Created by MahmoudFares on 28/11/2024.
-//
-
 import Combine
 import DesignComponent
 import Models
@@ -22,7 +15,7 @@ public class CharactersViewController: UIViewController {
         refreshControl.translatesAutoresizingMaskIntoConstraints = false
         return refreshControl
     }()
-    
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -43,7 +36,7 @@ public class CharactersViewController: UIViewController {
 
     // MARK: - DataSource & DataSourceSnapShot
     private var datasource: DataSource?
-  
+
     // MARK: - Properties
     private var hostingController: UIHostingController<SegmentView>?
     private var cancellables = Set<AnyCancellable>()
@@ -65,10 +58,6 @@ public class CharactersViewController: UIViewController {
         setupView()
         bindViewModel()
         send(.loadData)
-    }
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
     }
 
     // MARK: - Setup Views
@@ -93,7 +82,7 @@ public class CharactersViewController: UIViewController {
             stackView.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor),
             stackView.bottomAnchor.constraint(
-                equalTo: view.bottomAnchor, constant: -10),
+                equalTo: view.bottomAnchor, constant: -10)
         ])
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: UITableViewCell.identifier)
         datasource = makeDataSource()
@@ -168,7 +157,7 @@ extension CharactersViewController {
             }
         )
     }
-    
+
     private func cellForRow(
         _ tableView: UITableView,
         indexPath: IndexPath,
@@ -188,7 +177,7 @@ extension CharactersViewController {
     private func handleSnapshot(data: [MainCharacter], refreshable: Bool) {
         guard let datasource else { return }
         var snapshot = datasource.snapshot()
-        
+
         if snapshot.sectionIdentifiers.isEmpty {
             snapshot.appendSections([.main])
         }
@@ -203,7 +192,7 @@ extension CharactersViewController {
         }
         datasource.apply(snapshot, animatingDifferences: !refreshable)
     }
-    
+
     func send(_ action: CharactersViewModel.Action) {
         Task {
             try? await viewModel.trigger(action)

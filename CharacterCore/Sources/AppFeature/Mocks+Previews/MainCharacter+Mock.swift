@@ -1,10 +1,3 @@
-//
-//  MainCharacter+Mock.swift
-//  CharactersApp
-//
-//  Created by MahmoudFares on 29/11/2024.
-//
-
 #if DEBUG
 import Foundation
 import struct Models.MainCharacter
@@ -18,7 +11,7 @@ public extension MainCharacter {
         gender: "Male",
         location: "Forest"
     )
-    
+
     static let dead: Self = Self(
         id: 1,
         name: "Zephyr",
@@ -28,7 +21,7 @@ public extension MainCharacter {
         gender: "Male",
         location: "Forest"
     )
-    
+
     static let unknown: Self = Self(
         id: 1,
         name: "Zephyr",
@@ -87,7 +80,7 @@ public extension Array where Element == MainCharacter {
             location: "Sky"
         )
     ]
-    
+
     static let mockMore: [MainCharacter] = [
         MainCharacter(
             id: 6,
@@ -135,7 +128,6 @@ public extension Array where Element == MainCharacter {
             location: "Sky"
         )
     ]
-    
-    
+
 }
 #endif

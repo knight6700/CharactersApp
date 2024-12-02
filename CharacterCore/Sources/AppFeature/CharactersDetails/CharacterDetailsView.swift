@@ -1,18 +1,11 @@
-//
-//  CharactersDetails.swift
-//  CharactersApp
-//
-//  Created by MahmoudFares on 29/11/2024.
-//
-
 import SwiftUI
 import DesignComponent
 import struct Models.MainCharacter
 
 public struct CharacterDetailsView: View {
-    
+
     var viewModel: CharacterDetailsViewModel
-    
+
     public var body: some View {
         GeometryReader(content: { geometry in
             VStack(alignment: .leading) {
@@ -33,7 +26,7 @@ public struct CharacterDetailsView: View {
                 Button(action: {
                     viewModel.trigger(.backButtonTapped)
                 }, label: {
-                    ZStack{
+                    ZStack {
                         Circle()
                             .frame(width: 40)
                             .foregroundStyle(.white)

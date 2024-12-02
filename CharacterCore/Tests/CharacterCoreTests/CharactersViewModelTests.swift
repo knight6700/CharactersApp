@@ -1,10 +1,3 @@
-//
-//  Test.swift
-//  CharacterCore
-//
-//  Created by MahmoudFares on 01/12/2024.
-//
-
 import Foundation
 import Models
 import Testing
@@ -13,26 +6,24 @@ import Testing
 
 class CharactersViewModelTests {
     // Mock dependencies
-    var api: MockCharactersApi!
-    var repository: MockCharactersRepository!
-    var dataSource: MockCharactersDataSource!
-    var viewModel: CharactersViewModel!
-    
-    @Test("Test to verify Loading initial state")
-    func testInitialStateIsLoading() {
-        // MARK: - Setup Mocks for intial Api Response
-        let expectedPageOneDTo = MockCharacters.mock
+    var api: MockCharactersApi
+    var repository: MockCharactersRepository
+    var dataSource: MockCharactersDataSource
+    var viewModel: CharactersViewModel
+
+    init() {
         // Initialize mock API, repository, and data source
         api = MockCharactersApi(result: .failure(TimeoutError()))
         repository = MockCharactersRepository(api: api)
         dataSource = MockCharactersDataSource(repository: repository)
-        // Initialize view model
         viewModel = CharactersViewModel(router: .init(), dataSource: dataSource)
+    }
 
-        // MARK: - Initial State Check
-        // Verify that the initial state is 'loading'
+    @Test("Test to verify Loading initial state")
+    func testInitialStateIsLoading() {
         #expect(viewModel.viewState.state == .loading)
     }
+
     @Test("Test To Verify LoadData at page One")
     func testLoadDataPageOne() async throws {
         let expectedPageOneDTo = MockCharacters.mock
@@ -45,14 +36,13 @@ class CharactersViewModelTests {
         // Initialize view model
         viewModel = CharactersViewModel(router: .init(), dataSource: dataSource)
         try await viewModel.trigger(.loadData)
-        
+
         // Check that the view state reflects loaded characters
         #expect(
             viewModel.viewState.state == .loaded(expectedCharacterInfoPageOne, refeshable: true)
         )
-
     }
-    
+
     @Test("Test To Verify Next page loaded")
     func testLoadMoreNextPageLoading() async throws {
         // MARK: - Setup Mocks for intial Api Response
@@ -65,7 +55,7 @@ class CharactersViewModelTests {
         // Initialize view model
         viewModel = CharactersViewModel(router: .init(), dataSource: dataSource)
 
-        // MARK: -  Trigger load data View DidLoaded Here
+        // MARK: - Trigger load data View DidLoaded Here
         try await viewModel.trigger(.loadData)
 
         // Check that the view state reflects loaded characters
@@ -73,7 +63,7 @@ class CharactersViewModelTests {
         let expectedPageTwoDTo = MockCharacters.mockMore
         api = MockCharactersApi(result: .success(expectedPageTwoDTo))
         dataSource = MockCharactersDataSource(repository: repository)
-        
+
         let expectedCharacterInfoPageTwo =
         expepectedPageTwoDTO.results?.map { MainCharacter(characterInfo: $0) }
             ?? []
@@ -99,7 +89,7 @@ class CharactersViewModelTests {
         // Initialize view model
         viewModel = CharactersViewModel(router: .init(), dataSource: dataSource)
 
-        // MARK: -  Trigger load data View DidLoaded Here
+        // MARK: - Trigger load data View DidLoaded Here
         try await viewModel.trigger(.loadData)
 
         let expectedLiveCharacters =
@@ -115,7 +105,7 @@ class CharactersViewModelTests {
             viewModel.viewState.state == .loaded(expectedLiveCharacters, refeshable: true)
         )
     }
-    
+
     @Test("Test Error state")
     func testCharacterViewModel() async throws {
         api = MockCharactersApi(result: .failure(CharactersError.unknownError))

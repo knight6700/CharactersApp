@@ -1,4 +1,3 @@
-
 import Foundation
 
 protocol ParameterEncoder {
@@ -16,7 +15,7 @@ struct JSONParameterEncoder: ParameterEncoder {
             if urlRequest.value(forHTTPHeaderField: "Content-Type") == nil {
                 urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             }
-        }catch {
+        } catch {
             throw APIError.encodingFailed
         }
     }
@@ -48,7 +47,7 @@ public struct URLParameterEncoder: ParameterEncoder {
 public enum ParameterEncoding {
     case UrlEncoding
     case JsonEncoding
-    
+
     public func encode(urlRequest: inout URLRequest, parameters: Parameters?) throws {
         do {
             switch self {
@@ -56,13 +55,13 @@ public enum ParameterEncoding {
                 guard let urlParameters = parameters else { return }
                 try URLParameterEncoder().encode(urlRequest: &urlRequest,
                                                  with: urlParameters)
-                
+
             case .JsonEncoding:
                 guard let bodyParameters = parameters else { return }
                 try JSONParameterEncoder().encode(urlRequest: &urlRequest,
                                                   with: bodyParameters)
             }
-        }catch {
+        } catch {
             throw error
         }
     }
