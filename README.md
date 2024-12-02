@@ -1,3 +1,7 @@
+![SwiftUI](https://img.shields.io/badge/SwiftUI-blue.svg?style=flat)
+![UIKIT](https://img.shields.io/badge/UIKIT-blue.svg?style=flat)
+![Swift5.9](https://img.shields.io/badge/Swift_Version-5.9-green?logo=swift)
+![Swift Package Manager](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)
 # Characters App 📱
 
 **Characters App** is a Swift-based iOS application built using MVVM architecture. The app displays a list of characters with their details and allows filtering characters by their status: **Alive**, **Dead**, or **Unknown**. The app also includes a detailed view for individual characters.
@@ -182,8 +186,6 @@ Presentation Layer
 2. **Coordinator Pattern**: Use a BaseCoordinator to manage child coordinators and modularize navigation logic, ensuring scalability, reusability, and cleaner separation of concerns across app flows.
 3. **swift-sourcery-templates**: Use Sourcery for advanced protocol mocking, type erasure, and code-generation to reduce boilerplate and speed up development.
 .
-
-Would you like me to provide the `DependencyContainer` implementation or unit test examples for this structure?
 ---
 
 ## **Dependencies**
@@ -193,19 +195,21 @@ Would you like me to provide the `DependencyContainer` implementation or unit te
 - `URLSession`: For API communication (depending on implementation).
 - `Kingfisher`: For image downloading and caching.
 - `Snapshot-Testing`: For snapshot views.
+- `Netfox`: quick look on all executed network requests performed.
 ---
 
 ## **API Integration**
 The app fetches data from the **Rick and Morty API**.
+You will receive up to 20 documents per page
 
-### **Endpoints**
-1. **Get All Characters**  
-   `https://rickandmortyapi.com/api/character`
-   
+### **Endpoints**  
+1. **Fetch All Characters**  
+   - URL: `https://rickandmortyapi.com/api/character`  
+
 2. **Filter Characters by Status**  
-   `https://rickandmortyapi.com/api/character?status=<status>`  
-   Replace `<status>` with `alive`, `dead`, or `unknown`.
-
+   - URL: `https://rickandmortyapi.com/api/character?page=1&status=<status>`  
+   - Replace `<status>` with `alive`, `dead`, or `unknown`.  
+   - Use `page` query parameter to paginate results.   
 ---
 
 ## **Future Enhancements**

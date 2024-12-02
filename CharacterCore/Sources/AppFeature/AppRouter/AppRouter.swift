@@ -25,8 +25,7 @@ public class AppRouter: Router<AppRoute> {
     public override func createViewController(for route: AppRoute) -> UIViewController {
         switch route {
         case .characters:
-            let vc = CharactersFactory.createCharactersViewController(router: self)
-            return vc
+            return CharactersFactory.createCharactersViewController(router: self)
         case .characterDetails(character: let character):
             let viewModel = CharacterDetailsViewModel(state: .init(character: character), appRouter: self)
             let rootView = CharacterDetailsView(viewModel: viewModel)
