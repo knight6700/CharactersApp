@@ -22,7 +22,7 @@
    - [Data Layer](#data-layer)  
    - [Domain Layer](#domain-layer)  
    - [Presentation Layer](#presentation-layer)
-7. [Dependency Injection Graph](#dependency-injection-graph)
+7. [Graphs](#dependency-injection-graph)
 8. [Key Improvements](#key-improvements)
 9. [Dependencies](#dependencies)
 10. [API Integration](#api-integration)  
@@ -137,7 +137,7 @@ Data Layer
    └── CharactersDataSource
 ```
 <img src="Images/characters-architecture.svg" alt="Characters List" height="350"> 
----
+
 ## **State Management Protocols Usage**
 <img src="Images/characters-architecture.svg" alt="Characters List" height="350"> 
 
