@@ -153,6 +153,7 @@ Presentation Layer
 - `Kingfisher`: For image downloading and caching.
 - `Snapshot-Testing`: For snapshot views.
 - `Netfox`: For debugging network requests.
+- `SwiftLintPlugin`:  A tool to enforce Swift style and conventions within your project. 
 
 ---
 
