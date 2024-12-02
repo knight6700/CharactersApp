@@ -1,12 +1,12 @@
 import Foundation
 import Models
 
-public protocol CharactersDataSourceType {
+public protocol CharactersUseCaseType {
     var charactersRepository: CharactersRepositoryType { get }
     func getAllCharacters(parameters: CharacterParameters) async throws -> CharactersViewData
 }
 
-public struct CharactersDataSource: CharactersDataSourceType {
+public struct CharactersUseCase: CharactersUseCaseType {
     public var charactersRepository: CharactersRepositoryType
 
     public func getAllCharacters(parameters: Models.CharacterParameters) async throws -> CharactersViewData {

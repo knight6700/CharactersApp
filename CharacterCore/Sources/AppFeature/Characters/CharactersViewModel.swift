@@ -9,7 +9,7 @@ public enum LoadingState {
     case error(CharactersError)
 }
 
-public class CharactersViewModel: ViewModelType {
+public class CharactersViewModel: CompositeStateViewModel {
     public struct State {
         var status: [FilterStatus] = FilterStatus.allCases
         var characters: [MainCharacter] = []
@@ -43,18 +43,18 @@ public class CharactersViewModel: ViewModelType {
 
     weak private var router: AppRouter?
 
-    private var dataSource: CharactersDataSourceType
+    private var dataSource: CharactersUseCaseType
 
     public init(
         state: State = .init(),
         viewState: ViewState = .init(),
         router: AppRouter,
-        dataSource: CharactersDataSourceType
+        charactersUseCase: CharactersUseCaseType
     ) {
         self.state = state
         self.viewState = viewState
         self.router = router
-        self.dataSource = dataSource
+        self.dataSource = charactersUseCase
     }
 
     enum Action {
@@ -104,8 +104,8 @@ extension CharactersViewModel {
     }
 }
 // MARK: - Handle Actions
-extension CharactersViewModel {
-    fileprivate func getCharactrs(
+private extension CharactersViewModel {
+     func getCharactrs(
         parameters: CharacterParameters?,
         refreshable: Bool
     ) async {
@@ -120,14 +120,14 @@ extension CharactersViewModel {
         }
     }
 
-    fileprivate func loadData() async throws {
+    func loadData() async throws {
         self.viewState.state = .loading
         state.characters.removeAll()
         initiateParameters(status: viewState.selectedStatus?.rawValue)
         await getCharactrs(parameters: state.parameters, refreshable: true)
     }
 
-    private func loadMore(indexPath: Int) async throws {
+    func loadMore(indexPath: Int) async throws {
         let preloadThreshold = 5
         guard indexPath >= state.characters.count - preloadThreshold,
             let nextPage = state.parameters?.page,
@@ -138,7 +138,7 @@ extension CharactersViewModel {
         await getCharactrs(parameters: state.parameters, refreshable: false)
     }
 
-    fileprivate func tableViewCellTapped(index: Int) {
+    func tableViewCellTapped(index: Int) {
         let character = state.characters[index]
         Task { @MainActor in
             router?.navigate(
@@ -148,7 +148,7 @@ extension CharactersViewModel {
         }
     }
     // MARK: - Segment
-    fileprivate func handleSegment(selectedStatus: FilterStatus?) async throws {
+    func handleSegment(selectedStatus: FilterStatus?) async throws {
         guard viewState.selectedStatus != selectedStatus else {
             try await resetSegment()
             return
@@ -156,12 +156,12 @@ extension CharactersViewModel {
         try await applySegment(selectedStatus)
     }
 
-    fileprivate func resetSegment() async throws {
+    func resetSegment() async throws {
         viewState.selectedStatus = nil
         try await loadData()
     }
 
-    fileprivate func applySegment(_ selectedStatus: FilterStatus?) async throws {
+    func applySegment(_ selectedStatus: FilterStatus?) async throws {
         viewState.selectedStatus = selectedStatus
         initiateParameters(status: viewState.selectedStatus?.rawValue)
         viewState.state = .loading
@@ -171,8 +171,8 @@ extension CharactersViewModel {
 
 }
 // MARK: Handle Error For Characters
-extension CharactersViewModel {
-    fileprivate func handle(error: Error) -> CharactersError {
+private extension CharactersViewModel {
+    func handle(error: Error) -> CharactersError {
         if let networkError = error as? URLError {
             return .networkError(networkError.localizedDescription)
         }
