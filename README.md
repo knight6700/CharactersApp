@@ -108,12 +108,11 @@ The app uses the **MVVM architecture** for a clean and scalable structure.
 
 ### **Data Layer**
 This layer is responsible for fetching data from external sources (e.g., APIs, databases). It includes:
-- **`CharactersApi`**: Handles API calls.
+- **`CharactersDataSource`**: Handles API calls.
 - **`CharactersRepository`**: Provides an interface between the API and the domain layer by handling data fetching and transforming raw API responses into domain models.
 
 ### **Domain Layer**
 This layer focuses on the business logic and ensures that the app adheres to clean architecture principles. It includes:
-- **`CharactersDataSource`**: Defines the contract for data fetching.
 - **`CharactersUseCase`**: Encapsulates the business logic and uses the repository to fetch or modify data as required.
 
 ### **Presentation Layer**
@@ -128,15 +127,12 @@ This layer is concerned with the user interface and user interaction. It include
 ```plaintext
 Presentation Layer
    └── CharactersViewModel
-         └── MapCharactersUseCase
                └── Domain Layer
-                     └── CharactersDataSource
-                           └── Data Layer
-                                 ├── CharactersRepository
-                                 │     └── CharactersApi
-                                 └── CharactersService
+                     └── CharactersUseCase
+               └── Data Layer
+                     ├── CharactersRepository
+                             └── CharactersDataSource
 ```
-
 ---
 
 ## **Key Improvements**
