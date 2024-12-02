@@ -1,10 +1,3 @@
-//
-//  File.swift
-//  CharacterCore
-//
-//  Created by MahmoudFares on 01/12/2024.
-//
-
 import Foundation
 import NetworkHorizon
 import Models
@@ -17,7 +10,7 @@ extension CharactersService {
     var mainRoute: String {
         "character/"
     }
-    
+
     var requestConfiguration: NetworkHorizon.RequestConfiguration {
         switch self {
         case .characters(let parameters):

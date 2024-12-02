@@ -1,21 +1,14 @@
-//
-//  File.swift
-//  CharacterCore
-//
-//  Created by MahmoudFares on 01/12/2024.
-//
-
 import Foundation
 struct CharactersFactory {
     static func createCharactersViewController(router: AppRouter) -> CharactersViewController {
-        let api = CharactersApi()
-        let repository = CharactersRepository(api: api)
-        let dataSource = CharactersDataSource(charactersRepository: repository)
+        let api = CharactersDataSource()
+        let repository = CharactersRepository(dataSource: api)
+        let dataSource = CharactersUseCase(charactersRepository: repository)
         let viewModel = CharactersViewModel(
             state: CharactersViewModel.State(),
             viewState: CharactersViewModel.ViewState(),
             router: router,
-            dataSource: dataSource
+            charactersUseCase: dataSource
         )
         let vc = CharactersViewController(viewModel: viewModel)
         return vc

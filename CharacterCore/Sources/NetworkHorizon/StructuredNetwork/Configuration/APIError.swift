@@ -1,11 +1,10 @@
-
 import Foundation
 
 public enum APIError: Error, LocalizedError, Equatable {
     public static func == (lhs: APIError, rhs: APIError) -> Bool {
         lhs.errorDescription == rhs.errorDescription
     }
-    
+
     case badRequest
     case serverError(statusCode: Int)
     case tooManyRequests(remaining: Int)
@@ -30,7 +29,7 @@ public extension APIErrorHandler {
         guard let httpResponse = response as? HTTPURLResponse else {
             return .unknown(NSError(domain: "InvalidResponse", code: 0, userInfo: nil))
         }
-        
+
         switch httpResponse.statusCode {
         case 200...299:
             return .unknown(NSError(domain: "UnexpectedSuccess", code: httpResponse.statusCode, userInfo: nil))

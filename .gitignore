@@ -43,3 +43,4 @@ fastlane/screenshots
 Gemfile.lock
 
 .sentryclirc
+*.xcbkptlist

@@ -3,12 +3,13 @@
 
 import PackageDescription
 
-private let PackageDependancies:  [Package.Dependency] = [
+private let packageDependancies: [Package.Dependency] = [
     .package(
         url: "https://github.com/pointfreeco/swift-snapshot-testing",
         from: "1.16.0"
     ),
-    .package(url: "https://github.com/onevcat/Kingfisher", from: "8.1.1")
+    .package(url: "https://github.com/onevcat/Kingfisher", from: "8.1.1"),
+    .package(url: "https://github.com/lukepistrol/SwiftLintPlugin", from: "0.2.2"),
 ]
 private let products: [Product] = [
     .library(
@@ -30,13 +31,16 @@ private let products: [Product] = [
     .library(
         name: "NetworkHorizon",
         targets: ["NetworkHorizon"]
-    )
+    ),
 ]
-private let DESIGN_COMPONENTS: Target.Dependency = "DesignComponent"
+private let swiftLintPlugin: [Target.PluginUsage]? = [
+    .plugin(name: "SwiftLint", package: "SwiftLintPlugin")
+]
+private let designComponent: Target.Dependency = "DesignComponent"
 private let ROUTER: Target.Dependency = "Router"
 private let MODELS: Target.Dependency = "Models"
 private let NETWORK: Target.Dependency = "NetworkHorizon"
-private let KingFisher_Dependancy: Target.Dependency = .product(
+private let kingFisher: Target.Dependency = .product(
     name: "Kingfisher",
     package: "Kingfisher"
 )
@@ -46,36 +50,39 @@ let package = Package(
     defaultLocalization: .init("en"),
     platforms: [.iOS(.v17)],
     products: products,
-    dependencies: PackageDependancies,
+    dependencies: packageDependancies,
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "AppFeature",
             dependencies: [
-                DESIGN_COMPONENTS,
+                designComponent,
                 ROUTER,
                 MODELS,
-                KingFisher_Dependancy,
-                NETWORK
+                kingFisher,
+                NETWORK,
             ],
             resources: [],
             swiftSettings: [
                 .define("DEBUG", .when(configuration: .debug))
-            ]
+            ],
+            plugins: swiftLintPlugin
         ),
         .target(
             name: "NetworkHorizon",
             dependencies: [],
-            resources: []
+            resources: [],
+            plugins: swiftLintPlugin
         ),
         .target(
             name: "DesignComponent",
             dependencies: [
                 MODELS,
-                KingFisher_Dependancy
+                kingFisher,
             ],
-            resources: []
+            resources: [],
+            plugins: swiftLintPlugin
         ),
         .target(
             name: "Models",
@@ -87,18 +94,19 @@ let package = Package(
             dependencies: [
                 MODELS
             ],
-            resources: []
+            resources: [],
+            plugins: swiftLintPlugin
         ),
         .testTarget(
             name: "CharacterSnapShotTests",
             dependencies: [
                 "AppFeature",
-                DESIGN_COMPONENTS,
-                KingFisher_Dependancy,
+                designComponent,
+                kingFisher,
                 .product(
                     name: "SnapshotTesting",
                     package: "swift-snapshot-testing"
-                )
+                ),
             ]
         ),
         .testTarget(

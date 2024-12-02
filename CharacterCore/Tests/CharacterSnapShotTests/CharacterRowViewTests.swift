@@ -1,11 +1,3 @@
-//
-//  File.swift
-//  CharacterCore
-//
-//  Created by MahmoudFares on 29/11/2024.
-//
-
-
 import Foundation
 @testable import AppFeature
 import SnapshotTesting
@@ -20,13 +12,13 @@ final class CharacterRowViewTests: XCTestCase {
             .frame(width: 350)
         assertSnapshot(of: view, as: .image)
     }
-    
+
     func testCharacterRowViewDeadTest() {
         let view = CharacterRowView(character: .dead)
             .frame(width: 350)
         assertSnapshot(of: view, as: .image)
     }
-    
+
     func testCharacterRowViewUnknownTest() {
         let view = CharacterRowView(character: .unknown)
             .frame(width: 350)

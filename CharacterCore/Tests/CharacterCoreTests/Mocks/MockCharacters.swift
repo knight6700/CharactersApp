@@ -1,5 +1,3 @@
-
-
 import Foundation
 import Models
 
@@ -55,7 +53,7 @@ struct MockCharacters {
 
     // Helper to create an individual character
     private static func createCharacter(id: Int, status: CharacterStatus) -> CharacterInfo {
-        return CharacterInfo(
+         CharacterInfo(
             id: id,
             name: "Character \(id)",
             species: "Species \(id)",

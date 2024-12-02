@@ -1,10 +1,3 @@
-//
-//  CharacterImageView.swift
-//  CharactersApp
-//
-//  Created by MahmoudFares on 29/11/2024.
-//
-
 import SwiftUI
 import Kingfisher
 
@@ -21,7 +14,7 @@ public struct CharacterImageView: View {
     public var body: some View {
         KFImage(image)
             .resizable()
-            
+
             .scaledToFill()
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
     }

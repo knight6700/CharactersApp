@@ -1,10 +1,9 @@
-
 import Foundation
 
 public struct RequestConfiguration {
 
     // MARK: - Properties
-    
+
     let path: String
     let method: HTTPMethod
     let headers: [HTTPHeader]?

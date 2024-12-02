@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#f0f0f0"/>
+
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="bold">State Management Protocols Usage</text>
+
+  <!-- Protocols Box -->
+  <rect x="50" y="80" width="700" height="150" fill="#e6f2ff" stroke="#3399ff" stroke-width="2"/>
+  <text x="400" y="110" text-anchor="middle" font-size="16" font-weight="bold">Protocols</text>
+  
+  <!-- StateMachine -->
+  <rect x="100" y="140" width="200" height="80" fill="white" stroke="#3399ff"/>
+  <text x="200" y="170" text-anchor="middle" font-weight="bold">StateMachine</text>
+  <text x="200" y="190" text-anchor="middle" font-size="12">- Handles Business Logic</text>
+  <text x="200" y="205" text-anchor="middle" font-size="12">- Processes Actions Only</text>
+
+  <!-- StateRendering -->
+  <rect x="350" y="140" width="200" height="80" fill="white" stroke="#33cc33"/>
+  <text x="450" y="170" text-anchor="middle" font-weight="bold">StateRendering</text>
+  <text x="450" y="190" text-anchor="middle" font-size="12">- Renders View on Updates</text>
+  <text x="450" y="205" text-anchor="middle" font-size="12">- Handles Loading/Error States</text>
+
+  <!-- CompositeStateViewModel -->
+  <rect x="600" y="140" width="200" height="80" fill="white" stroke="#ff6b6b"/>
+  <text x="700" y="170" text-anchor="middle" font-weight="bold">CompositeStateViewModel</text>
+  <text x="700" y="190" text-anchor="middle" font-size="12">- Full Business Logic</text>
+  <text x="700" y="205" text-anchor="middle" font-size="12">- Re-renders View Completely</text>
+
+  <!-- Use Cases Section -->
+  <rect x="50" y="250" width="700" height="300" fill="#f9f9f9" stroke="#666" stroke-width="2"/>
+  <text x="400" y="280" text-anchor="middle" font-size="16" font-weight="bold">Use Case Scenarios</text>
+
+  <!-- Scenario 1: State Machine Only -->
+  <rect x="100" y="320" width="200" height="200" fill="#e6f3ff" stroke="#3399ff"/>
+  <text x="200" y="350" text-anchor="middle" font-weight="bold">Scenario 1: State Machine Only</text>
+  <text x="200" y="380" text-anchor="middle" font-size="12">Use Case:</text>
+  <text x="200" y="400" text-anchor="middle" font-size="12">- Game Logic</text>
+  <text x="200" y="420" text-anchor="middle" font-size="12">- Action Handling</text>
+  <text x="200" y="440" text-anchor="middle" font-size="12">- No View Updates</text>
+
+  <!-- Scenario 2: State Rendering Only -->
+  <rect x="350" y="320" width="200" height="200" fill="#e6ffe6" stroke="#33cc33"/>
+  <text x="450" y="350" text-anchor="middle" font-weight="bold">Scenario 2: State Rendering Only</text>
+  <text x="450" y="380" text-anchor="middle" font-size="12">Use Case:</text>
+  <text x="450" y="400" text-anchor="middle" font-size="12">- Read-Only Displays</text>
+  <text x="450" y="420" text-anchor="middle" font-size="12">- Loading/Error States</text>
+  <text x="450" y="440" text-anchor="middle" font-size="12">- UI Updates Only</text>
+
+  <!-- Scenario 3: Composite ViewModel -->
+  <rect x="600" y="320" width="200" height="200" fill="#fff0f0" stroke="#ff6b6b"/>
+  <text x="700" y="350" text-anchor="middle" font-weight="bold">Scenario 3: Full ViewModel</text>
+  <text x="700" y="380" text-anchor="middle" font-size="12">Use Case:</text>
+  <text x="700" y="400" text-anchor="middle" font-size="12">- User Profiles</text>
+  <text x="700" y="420" text-anchor="middle" font-size="12">- Complex UI</text>
+  <text x="700" y="440" text-anchor="middle" font-size="12">- Full Feature Logic</text>
+
+  <!-- Connecting Lines -->
+  <line x1="200" y1="220" x2="200" y2="320" stroke="#3399ff" stroke-dasharray="5,5"/>
+  <line x1="450" y1="220" x2="450" y2="320" stroke="#33cc33" stroke-dasharray="5,5"/>
+  <line x1="700" y1="220" x2="700" y2="320" stroke="#ff6b6b" stroke-dasharray="5,5"/>
+</svg>

@@ -1,10 +1,3 @@
-//
-//  CharacterCellView.swift
-//  CharactersApp
-//
-//  Created by MahmoudFares on 28/11/2024.
-//
-
 import DesignComponent
 import SwiftUI
 

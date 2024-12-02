@@ -1,21 +1,14 @@
-//
-//  File.swift
-//  CharacterCore
-//
-//  Created by MahmoudFares on 01/12/2024.
-//
-
 import Foundation
 import Models
 
 struct CharactersRepository: CharactersRepositoryType {
-    private let api: CharactersApiType
+    private let dataSource: CharactersDataSourceType
 
-    init(api: CharactersApiType = CharactersApi()) {
-        self.api = api
+    init(dataSource: CharactersDataSourceType) {
+        self.dataSource = dataSource
     }
 
     func fetchCharacters(parameters: CharacterParameters) async throws -> CharactersDTO {
-        try await api.getCharacters(parameters: parameters)
+        try await dataSource.getCharacters(parameters: parameters)
     }
 }

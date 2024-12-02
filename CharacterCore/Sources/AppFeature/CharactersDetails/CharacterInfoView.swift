@@ -1,19 +1,12 @@
-//
-//  CharactersDetails.swift
-//  CharactersApp
-//
-//  Created by MahmoudFares on 29/11/2024.
-//
-
 import SwiftUI
 import Models
 
 struct CharacterInfoView: View {
-    
+
     let character: MainCharacter
-    
+
     var body: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .leading) {
             HStack(alignment: .top) {
                 VStack(alignment: .leading, spacing: 0) {
                     Text(character.name)
@@ -44,7 +37,7 @@ struct CharacterInfoView: View {
                     }
             }
             .padding()
-            HStack(alignment: .top){
+            HStack(alignment: .top) {
                 Text("Location :")
                     .fontWeight(.bold)
                     .font(.title2)
