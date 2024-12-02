@@ -127,12 +127,16 @@ This layer is concerned with the user interface and user interaction. It include
 ```plaintext
 Presentation Layer
    └── CharactersViewModel
-               └── Domain Layer
-                     └── CharactersUseCase
-               └── Data Layer
-                     ├── CharactersRepository
-                             └── CharactersDataSource
+          ↓
+Domain Layer
+   └── CharactersUseCase
+          ↓
+Data Layer
+   ├── CharactersRepository
+          ↓
+   └── CharactersDataSource
 ```
+<img src="Images/characters-architecture.svg" alt="Characters List" height="350"> 
 ---
 
 ## **Key Improvements**
