@@ -139,7 +139,7 @@ Data Layer
 <img src="Images/characters-architecture.svg" alt="Characters List" height="350"> 
 
 ## **State Management Protocols Usage**
-<img src="Images/characters-architecture.svg" alt="Characters List" height="350"> 
+<img src="Images/state-management-protocols-diagram.svg" alt="Characters List" height="350"> 
 
 ## **Key Improvements**
 1. **Factory Pattern for Initialization**: Create a `DependencyContainer` to manage dependencies and build the graph.
