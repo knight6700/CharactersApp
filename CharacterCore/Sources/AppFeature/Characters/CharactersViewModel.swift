@@ -43,18 +43,21 @@ public class CharactersViewModel: CompositeStateViewModel {
 
     weak private var router: AppRouter?
 
-    private var dataSource: CharactersUseCaseType
+    private let charactersUseCase: CharactersUseCaseType
+    private let filterUseCase: FilterUseCaseType?
 
     public init(
         state: State = .init(),
         viewState: ViewState = .init(),
         router: AppRouter,
-        charactersUseCase: CharactersUseCaseType
+        charactersUseCase: CharactersUseCaseType,
+        filterUseCase: FilterUseCaseType? = nil
     ) {
         self.state = state
         self.viewState = viewState
         self.router = router
-        self.dataSource = charactersUseCase
+        self.charactersUseCase = charactersUseCase
+        self.filterUseCase = filterUseCase
     }
 
     enum Action {
@@ -111,7 +114,7 @@ private extension CharactersViewModel {
     ) async {
         guard let parameters else { return }
         do {
-            let data = try await self.dataSource.getAllCharacters(
+            let data = try await self.charactersUseCase.getAllCharacters(
                 parameters: parameters)
             self.state.totalPages = data.totalPages
             self.appendCharacters(data.characters, refreshable: refreshable)
@@ -149,26 +152,11 @@ private extension CharactersViewModel {
     }
     // MARK: - Segment
     func handleSegment(selectedStatus: FilterStatus?) async throws {
-        guard viewState.selectedStatus != selectedStatus else {
-            try await resetSegment()
-            return
-        }
-        try await applySegment(selectedStatus)
-    }
-
-    func resetSegment() async throws {
-        viewState.selectedStatus = nil
+        guard let filter = filterUseCase?.handleFilter(selectedStatus: selectedStatus, parameters: state.parameters) else { return }
+        state.parameters = filter.parameters
+        viewState.selectedStatus = filter.selectedFilter
         try await loadData()
     }
-
-    func applySegment(_ selectedStatus: FilterStatus?) async throws {
-        viewState.selectedStatus = selectedStatus
-        initiateParameters(status: viewState.selectedStatus?.rawValue)
-        viewState.state = .loading
-        state.characters.removeAll()
-        await getCharactrs(parameters: state.parameters, refreshable: true)
-    }
-
 }
 // MARK: Handle Error For Characters
 private extension CharactersViewModel {

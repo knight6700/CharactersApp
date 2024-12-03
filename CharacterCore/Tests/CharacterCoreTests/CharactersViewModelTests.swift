@@ -8,7 +8,8 @@ class CharactersViewModelTests {
     // Mock dependencies
     var api: MockCharactersDataSource
     var repository: MockCharactersRepository
-    var         characterUseCase: MockCharactersUseCase
+    var characterUseCase: MockCharactersUseCase
+    var filterUseCase: MockFilterUseCase?
     var viewModel: CharactersViewModel
 
     init() {
@@ -85,8 +86,13 @@ class CharactersViewModelTests {
         api = MockCharactersDataSource(result: .success(expectFilterDTO))
         repository = MockCharactersRepository(api: api)
         characterUseCase = MockCharactersUseCase(repository: repository)
+        filterUseCase = MockFilterUseCase()
         // Initialize view model
-        viewModel = CharactersViewModel(router: .init(), charactersUseCase: characterUseCase)
+        viewModel = CharactersViewModel(
+            router: .init(),
+            charactersUseCase: characterUseCase,
+            filterUseCase: filterUseCase
+        )
         // MARK: - Trigger load data View DidLoaded Here
         try await viewModel.trigger(.loadData)
 

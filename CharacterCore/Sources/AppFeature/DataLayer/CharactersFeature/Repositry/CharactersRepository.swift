@@ -2,9 +2,9 @@ import Foundation
 import Models
 
 struct CharactersRepository: CharactersRepositoryType {
-    private let dataSource: CharactersDataSourceType
+    private let dataSource: CharactersRemoteDataSourceType
 
-    init(dataSource: CharactersDataSourceType) {
+    init(dataSource: CharactersRemoteDataSourceType) {
         self.dataSource = dataSource
     }
 
