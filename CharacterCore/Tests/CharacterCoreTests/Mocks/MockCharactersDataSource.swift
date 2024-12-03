@@ -2,7 +2,7 @@ import Foundation
 import AppFeature
 import Models
 
-struct MockCharactersDataSource: CharactersDataSourceType {
+struct MockCharactersDataSource: CharactersRemoteDataSourceType {
     enum MockError: Error {
         case networkError
     }

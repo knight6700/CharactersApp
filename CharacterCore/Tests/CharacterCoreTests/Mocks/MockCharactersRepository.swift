@@ -3,11 +3,11 @@ import AppFeature
 import Models
 
 class MockCharactersRepository: CharactersRepositoryType {
-    let api: CharactersDataSourceType
+    let api: CharactersRemoteDataSourceType
     var params: CharacterParameters?
     var fetchCalled = 0
 
-    init(api: CharactersDataSourceType) {
+    init(api: CharactersRemoteDataSourceType) {
         self.api = api
     }
 
